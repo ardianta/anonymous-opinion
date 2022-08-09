@@ -138,7 +138,11 @@ export default function App() {
   const handleMessageChange = (event) => {
     setMessage(event.target.value);
     console.log(message);
-  } 
+  }
+
+  const handleLogout = (event) => {
+
+  }
 
   return (
     <div className="mainContainer">
@@ -153,6 +157,11 @@ export default function App() {
         {currentAccount && (
           <div>
           <form onSubmit={wave}>
+            <div className="mb-3">
+              Hi, {currentAccount}
+              {/* <button onClick={ handleLogout }
+              className="btn btn-light">Logout</button> */}
+            </div>
             <div className="mb-3">
               <label for="message">What in your mind?</label>
               <textarea className="form-control" rows="3" placeholder="Write your opinion..." 
@@ -169,12 +178,14 @@ export default function App() {
         {!currentAccount && (
           <button className="waveButton" onClick={connectWallet}>Connect Wallet</button>
         )}
-
+        
+        {currentAccount && (
+          <h2>Recent Opinions..</h2>
+        )}
+  
           <div className="my-5">
             {allWaves.map((wave, index) => {
               return(
-                <>
-                <h2>Recent Opinions..</h2>
                 <div key={index} className="card my-3">
                   <div className="card-header small text-primary">
                     <div className="">{wave.address}</div>
@@ -184,7 +195,6 @@ export default function App() {
                     <time className="small text-muted">{ formatDistance(new Date(wave.timestamp.toString()), new Date()) }</time>
                   </div>  
                 </div>
-                </>  
               )
             })}
           </div>
