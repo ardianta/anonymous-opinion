@@ -105,7 +105,8 @@ export default function App() {
     }
   }
 
-  const wave = async () => {
+  const wave = async (e) => {
+    e.preventDefault();
     try {
       const { ethereum } = window;
 
@@ -168,7 +169,7 @@ export default function App() {
               onChange={handleMessageChange} required>{message}</textarea>
             </div>
 
-            <button className="btn btn-primary" onClick={wave}>
+            <button className="btn btn-primary">
               Publish
             </button>
           </form>
