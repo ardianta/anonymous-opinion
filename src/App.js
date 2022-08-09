@@ -171,9 +171,10 @@ export default function App() {
         )}
 
           <div className="my-5">
-          <h2>Recent Opinions..</h2>
             {allWaves.map((wave, index) => {
               return(
+                <>
+                <h2>Recent Opinions..</h2>
                 <div key={index} className="card my-3">
                   <div className="card-header small text-primary">
                     <div className="">{wave.address}</div>
@@ -182,7 +183,8 @@ export default function App() {
                     <p class="lead">{wave.message}</p>
                     <time className="small text-muted">{ formatDistance(new Date(wave.timestamp.toString()), new Date()) }</time>
                   </div>  
-                </div>  
+                </div>
+                </>  
               )
             })}
           </div>
